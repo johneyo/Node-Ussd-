@@ -193,7 +193,7 @@ assert-plus@^0.2.0:
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-0.2.0.tgz#d74e1b87e7affc0db8aadb7021f3fe48101ab234"
   integrity sha1-104bh+ev/A24qttwIfP+SBAasjQ=
 
-async@^2.0.1:
+async@^2.0.1, async@^2.6.1:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.3.tgz#d72625e2344a3656e3a3ad4fa749fa83299d82ff"
   integrity sha512-zflvls11DCy+dQWzTW2dzuilv8Z5X/pjfmZOWba6TNIVDm+2UDaJmXSOXlasHKfNBs8oo3M0aT50fDEWfKZjXg==
@@ -2094,6 +2094,13 @@ url-parse-lax@^3.0.0:
   integrity sha1-FrXK/Afb42dsGxmZF3gj1lA6yww=
   dependencies:
     prepend-http "^2.0.0"
+
+ussd-menu-builder@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/ussd-menu-builder/-/ussd-menu-builder-1.2.0.tgz#d8b1e88484dbaa2614017d263aaa805edd695c81"
+  integrity sha512-Du8qPi16fbwC8QWvIA+QAyyM8MZ2rIXxuZLySDz5HNCEBXY4L6KAhqnG4kv5ZAuO6rpH2XmBOh40Xcb0gEo/uQ==
+  dependencies:
+    async "^2.6.1"
 
 util-deprecate@~1.0.1:
   version "1.0.2"
