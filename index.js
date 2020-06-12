@@ -32,6 +32,7 @@ menu.startState({
   },
 });
 
+//User Registration
 menu.state("userRegistration", {
   run: () => {
     menu.con(
@@ -301,6 +302,64 @@ menu.state("savingsPlanBalance", {
   next: {
     "1": "",
     "2": "exit",
+  },
+});
+
+menu.state("savingsPlanLoanLiquidation", {
+  run: () => {
+    menu.con(
+      "How do you want to Liquidate your plan:" +
+        "\n1. Liquidate via bank transfer" +
+        "\n2. Liquidate via card" +
+        "\n3. Go back" +
+        "\n4. Exit"
+    );
+  },
+  next: {
+    "1": "bankLiquidation",
+    "2": "cardLiquidation",
+    "3": "",
+    "4": "exit",
+  },
+});
+
+menu.state("cardLiquidation", {
+  run: () => {
+    menu.con("Put in your card number:" + "\n1. Go back" + "\n2. Exit");
+  },
+  next: {
+    "*\\d+": "cardLiquidation.number",
+    "1": "savingsPlanLoanLiquidation",
+    "2": "exit",
+  },
+});
+
+menu.state("cardLiquidation.number", {
+  run: () => {
+    var number = menu.val;
+    registerPhoneNumber(number)
+      .then(function (res) {
+        menu.con("Put in your Card cvv" + "\n0. Go back" + "\n*. Exit");
+      })
+      .catch(() =>
+        menu.con("Unable to process card" + "\n0. Go Back" + "\n*. Exit")
+      );
+  },
+  next: {
+    "*\\d+": "cardLiquidation.cvv",
+    "0": "cardLiquidation",
+    "*": "exit",
+  },
+});
+
+menu.state("loanTopUpRequest.cvv", {
+  run: () => {
+    var cvv = menu.val;
+    registerPhoneNumber(cvv)
+      .then(function (res) {
+        menu.end("Your loan liquidation has been logged for approval, thanks.");
+      })
+      .catch(() => menu.end("Your loan liquidation request failed."));
   },
 });
 
